@@ -3,7 +3,7 @@
         <div className="card">
             <h1>Pemrograman Framework Lanjutan</h1>
             <br/>
-            <img src="img/doraemon.jpg" width="100%"/>
+            <img src="img/doraemon.jpg" width="85%"/>
                 {children}
             <br/>
             <footer>
