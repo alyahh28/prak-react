@@ -2,6 +2,7 @@ import { MdDashboard } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { CiShoppingCart } from "react-icons/ci";
 import { AiOutlineCustomerService } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 export default function Sidebar() {
     return (
@@ -17,17 +18,35 @@ export default function Sidebar() {
             {/* List Menu */}
             <div id="sidebar-menu" className="mt-10">
                 <ul id="menu-list" className="space-y-3">
-                    <li id="menu-1" className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold">
-                        <MdDashboard className="mr-4 text-xl" />
-                        <span>Dashboard</span>
-                    </li>
-                    <li id="menu-2" className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold">
+                   <li>
+                        <Link
+                            id="menu-1"
+                            to="/"
+                            className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold"
+                        >
+                            <MdDashboard className="mr-4 text-xl" />
+                            Dashboard
+                        </Link>
+                        </li>
+                    <li>
+                        <Link
+                         id="menu-2" 
+                         to="/"
+                         className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium
+                         text-gray-600 hover:bg-green-200 hover:font-extrabold">
                         <CiShoppingCart className="mr-4 text-xl" />
-                        <span>Orders</span>
+                        Orders 
+                        </Link>
                     </li>
-                    <li id="menu-3" className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold">
+                    <li> 
+                        <Link 
+                        id="menu-3" 
+                        to="/"
+                        className="hover:text-hijau flex cursor-pointer 
+                    items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold">
                         <AiOutlineCustomerService className="mr-4 text-xl" />
-                        <span>Customers</span>
+                        Customers
+                    </Link>
                     </li>
                 </ul>
             </div>
@@ -38,7 +57,7 @@ export default function Sidebar() {
                     <div id="footer-text" className="text-white text-sm">
                         <span>Please organize your menus through button below!</span>
                         <div id="add-menu-button" className="flex justify-center items-center p-2 mt-3 bg-blue-400 rounded-md space-x-2">
-                            <FaPlus className="mr-4 text-xl"/>
+                            <FaPlus className="mr-4 text-xl" />
                             <span className="text-white flex items-center">Add Menus</span>
                         </div>
                     </div>
