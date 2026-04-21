@@ -50,7 +50,7 @@ export default function Header() {
                 </div>
                 
                 <div className="flex items-center space-x-4 border-l pl-4 border-gray-300">
-                    <span className="hidden md:block">Hello, <b>Fikri Muhaffizh</b></span>
+                    <span className="hidden md:block">Hello, <b>Alyah</b></span>
                     <img src="https://www.shutterstock.com/image-photo/colorful-sunset-sky-calm-waves-600nw-2623355457.jpg" className="w-10 h-10 rounded-full border-2 border-green-500" />
                 </div>
             </div>

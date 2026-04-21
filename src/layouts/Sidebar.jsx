@@ -10,8 +10,8 @@ export default function Sidebar() {
         `flex cursor-pointer items-center rounded-xl p-4  space-x-2
     
         ${isActive ? 
-            "text-hijau bg-green-200 font-extrabold" : 
-            "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
+            "text-biru bg-blue-200 font-extrabold" : 
+            "text-gray-600 hover:text-biru hover:bg-blue-200 hover:font-extrabold"
         }`
 
     return (
