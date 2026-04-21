@@ -5,7 +5,7 @@ import PageHeader from "../components/PageHeader";
 export default function Customers() {
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
-            <PageHeader />
+            <PageHeader title="Customer" />
             <p>Ini Halaman Customer</p>
         </div>
     );

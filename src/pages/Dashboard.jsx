@@ -14,7 +14,7 @@ export default function Dashboard() {
 
     return (
         <div className="p-6 bg-gray-50 min-h-screen">
-            <PageHeader />
+            <PageHeader title="Dashboard" />
             
             {/* Grid Stats */}
             <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-6">

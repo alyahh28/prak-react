@@ -2,9 +2,18 @@ import { MdDashboard } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 import { CiShoppingCart } from "react-icons/ci";
 import { AiOutlineCustomerService } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 export default function Sidebar() {
+
+    const menuClass = ({ isActive }) =>
+        `flex cursor-pointer items-center rounded-xl p-4  space-x-2
+    
+        ${isActive ? 
+            "text-hijau bg-green-200 font-extrabold" : 
+            "text-gray-600 hover:text-hijau hover:bg-green-200 hover:font-extrabold"
+        }`
+
     return (
         <div id="sidebar" className="flex min-h-screen w-90 flex-col bg-white p-10 shadow-lg">
             {/* Logo */}
@@ -19,34 +28,32 @@ export default function Sidebar() {
             <div id="sidebar-menu" className="mt-10">
                 <ul id="menu-list" className="space-y-3">
                    <li>
-                        <Link
+                        <NavLink
                             id="menu-1"
                             to="/"
-                            className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold"
+                            className={menuClass}
                         >
                             <MdDashboard className="mr-4 text-xl" />
                             Dashboard
-                        </Link>
+                        </NavLink>
                         </li>
                     <li>
-                        <Link
+                        <NavLink
                          id="menu-2" 
-                         to="/"
-                         className="hover:text-hijau flex cursor-pointer items-center rounded-xl p-4 font-medium
-                         text-gray-600 hover:bg-green-200 hover:font-extrabold">
+                         to="/orders"
+                         className={menuClass}>
                         <CiShoppingCart className="mr-4 text-xl" />
                         Orders 
-                        </Link>
+                        </NavLink>
                     </li>
                     <li> 
-                        <Link 
+                        <NavLink 
                         id="menu-3" 
-                        to="/"
-                        className="hover:text-hijau flex cursor-pointer 
-                    items-center rounded-xl p-4 font-medium text-gray-600 hover:bg-green-200 hover:font-extrabold">
+                        to="/customers"
+                        className={menuClass}>
                         <AiOutlineCustomerService className="mr-4 text-xl" />
                         Customers
-                    </Link>
+                    </NavLink>
                     </li>
                 </ul>
             </div>
