@@ -25,6 +25,40 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/customers" element={<Customers />} />
+            
+            <Route path="/error-400" element={
+    <NotFound 
+      code="400" 
+      title="Bad Request"
+      description="Server tidak dapat memproses permintaan Anda karena formatnya salah."
+    />
+  } />
+
+  <Route path="/error-401" element={
+    <NotFound 
+      code="401" 
+      title="Unauthorized"
+      description="Waduh, sepertinya Anda belum login atau tidak punya akses ke sini."
+         />
+  } />
+
+  <Route path="/error-403" element={
+    <NotFound 
+      code="403" 
+      title="Access Forbidden"
+      description="Maaf ya, area ini terlarang untuk akun Anda. Silakan hubungi admin."
+    />
+  } />
+
+  {/* Page Not Found (404) */}
+  <Route path="*" element={
+    <NotFound 
+      code="404" 
+      title="Lost in Space"
+      description="Halaman yang kamu cari tidak ada di radar kami. Mungkin sedang dalam perbaikan."
+      
+    />
+  } />
           </Routes>
 
         </div>

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowLeft, FaHome, FaQuestionCircle } from "react-icons/fa";
+import { FaHome, FaQuestionCircle, FaExclamationTriangle } from "react-icons/fa";
 
-export default function NotFound() {
+// Tambahkan props: code, title, description, image
+export default function NotFound({ code, title, description, image }) {
     return (
         <div className="p-6 bg-[#F3F4F8] min-h-screen flex flex-col font-sans relative overflow-hidden">
             
@@ -13,16 +14,16 @@ export default function NotFound() {
             {/* Header / Breadcrumb */}
             <div className="relative z-10 mb-8 flex justify-between items-end">
                 <div>
-                    <h1 className="text-3xl font-black text-gray-800 tracking-tight">404 Error</h1>
+                    <h1 className="text-3xl font-black text-gray-800 tracking-tight">{code} Error</h1>
                     <div className="flex items-center gap-2 text-sm font-semibold mt-1">
                         <span className="text-gray-400">Application</span>
                         <span className="w-1 h-1 rounded-full bg-gray-300"></span>
-                        <span className="text-[#00B074]">Lost in Space</span>
+                        <span className="text-[#00B074]">{title || "System Message"}</span>
                     </div>
                 </div>
                 <div className="hidden md:block text-right">
                     <span className="text-xs font-bold text-gray-400 uppercase tracking-widest">System Status</span>
-                    <p className="text-sm font-bold text-red-500">Page Not Found</p>
+                    <p className="text-sm font-bold text-red-500 uppercase">Action Required</p>
                 </div>
             </div>
 
@@ -31,29 +32,32 @@ export default function NotFound() {
                 
                 {/* Visual Illustration */}
                 <div className="relative mb-12">
-                    {/* Animated Glow */}
                     <div className="absolute inset-0 bg-[#00B074] blur-[60px] opacity-10 animate-pulse"></div>
                     
                     <div className="relative flex items-center justify-center animate-bounce-slow">
+                        {/* Background Code (Shadow) */}
                         <span className="text-[12rem] font-black leading-none tracking-tighter text-gray-900 opacity-[0.04] absolute">
-                            404
+                            {code}
                         </span>
-                        <div className="relative z-10 bg-white p-8 rounded-[3rem] shadow-2xl border border-gray-50">
-                            <svg className="w-24 h-24 text-[#00B074]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 9.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
+                        
+                        {/* Image/Icon Center */}
+                        <div className="relative z-10 bg-white p-6 rounded-[3rem] shadow-2xl border border-gray-50 max-w-[280px]">
+                            {image ? (
+                                <img src={image} alt={`Error ${code}`} className="w-40 h-40 object-contain" />
+                            ) : (
+                                <FaExclamationTriangle className="w-24 h-24 text-[#00B074]" />
+                            )}
                         </div>
                     </div>
                 </div>
 
                 {/* Content Text */}
                 <div className="max-w-md">
-                    <h2 className="text-4xl font-black text-gray-900 mb-4 tracking-tight">
-                        Waduh! Kamu Nyasar?
+                    <h2 className="text-4xl font-black text-gray-900 mb-4 tracking-tight uppercase">
+                        {code === "404" ? "Waduh! Kamu Nyasar?" : `Error ${code}`}
                     </h2>
                     <p className="text-gray-500 text-lg leading-relaxed mb-10 font-medium">
-                        Halaman yang kamu tuju tidak ada di radar kami. <br/>
-                        Mungkin sedang dalam perbaikan atau pindah alamat.
+                        {description || "Terjadi kesalahan pada sistem. Silakan coba beberapa saat lagi."}
                     </p>
 
                     {/* Button Group */}
@@ -78,16 +82,15 @@ export default function NotFound() {
 
                 {/* Quick Shortcuts */}
                 <div className="mt-16 pt-8 border-t border-gray-100 w-full max-w-lg">
-                    <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-4">Mungkin ini yang kamu cari:</p>
-                    <div className="flex flex-wrap justify-center gap-6">
-                        <Link to="/products" className="text-sm font-bold text-gray-600 hover:text-[#00B074] transition-colors">Produk</Link>
-                        <Link to="/orders" className="text-sm font-bold text-gray-600 hover:text-[#00B074] transition-colors">Pesanan Saya</Link>
-                        <Link to="/settings" className="text-sm font-bold text-gray-600 hover:text-[#00B074] transition-colors">Pengaturan</Link>
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] mb-4">Butuh bantuan navigasi?</p>
+                    <div className="flex flex-wrap justify-center gap-6 text-sm font-bold">
+                        <Link to="/" className="text-gray-600 hover:text-[#00B074] transition-colors">Dashboard</Link>
+                        <Link to="/products" className="text-gray-600 hover:text-[#00B074] transition-colors">Produk</Link>
+                        <Link to="/orders" className="text-gray-600 hover:text-[#00B074] transition-colors">Pesanan</Link>
                     </div>
                 </div>
             </div>
 
-            {/* Tailwind Custom Animation in Style tag or Tailwind Config */}
             <style dangerouslySetInnerHTML={{__html: `
                 @keyframes bounce-slow {
                     0%, 100% { transform: translateY(0); }
