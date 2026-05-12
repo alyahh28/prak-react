@@ -4,6 +4,7 @@ import { CiShoppingCart } from "react-icons/ci";
 import { AiOutlineCustomerService } from "react-icons/ai";
 import { BiErrorCircle, BiSolidErrorAlt } from "react-icons/bi";
 import { NavLink } from "react-router-dom";
+import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 
 export default function Sidebar() {
 
@@ -48,6 +49,12 @@ export default function Sidebar() {
                         <NavLink id="menu-customers" to="/customers" className={menuClass}>
                             <AiOutlineCustomerService className="text-xl" />
                             <span>Customers</span>
+                        </NavLink>
+                    </li>
+                    <li> 
+                        <NavLink id="menu-products" to="/products" className={menuClass}>
+                         <MdOutlineProductionQuantityLimits className="text-xl" /> 
+                            <span>Products</span>
                         </NavLink>
                     </li>
                 </ul>

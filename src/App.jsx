@@ -11,6 +11,8 @@ const NotFound = React.lazy(() => import('./pages/NotFound'))
 const Login = React.lazy(() => import('./pages/auth/Login'))
 const Register = React.lazy(() => import('./pages/auth/Register'))
 const Forgot = React.lazy(() => import('./pages/auth/Forgot'))
+const Products = React.lazy(() => import('./pages/Products'))
+const ProductDetail = React.lazy(() => import("./pages/ProductDetail"))
 
 
 
@@ -20,58 +22,57 @@ const AuthLayout = React.lazy(() => import('./layouts/AuthLayout'))
 
 function App() {
   const [count, setCount] = useState(0)
-  
+
   return (
     <Suspense fallback={<Loading />}>
-    <Routes>
-      <Route element={<MainLayout />}>
-        <Route path="*" element={<NotFound />} />
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/orders" element={<Orders />} />
-        <Route path="/customers" element={<Customers />} />
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetail />} /> 
+          <Route path="/error-400" element={
+            <NotFound
+              code="400"
+              title="Bad Request"
+              description="Server tidak dapat memproses permintaan Anda karena formatnya salah."
+            />
+          } />
 
-        <Route path="/error-400" element={
-          <NotFound
-            code="400"
-            title="Bad Request"
-            description="Server tidak dapat memproses permintaan Anda karena formatnya salah."
-          />
-        } />
+          <Route path="/error-401" element={
+            <NotFound
+              code="401"
+              title="Unauthorized"
+              description="Waduh, sepertinya Anda belum login atau tidak punya akses ke sini."
+            />
+          } />
 
+          <Route path="/error-403" element={
+            <NotFound
+              code="403"
+              title="Access Forbidden"
+              description="Maaf ya, area ini terlarang untuk akun Anda. Silakan hubungi admin."
+            />
+          } />
 
+          {/* Page Not Found (404) */}
+          <Route path="*" element={
+            <NotFound
+              code="404"
+              title="Lost in Space"
+              description="Halaman yang kamu cari tidak ada di radar kami. Mungkin sedang dalam perbaikan."
 
-        <Route path="/error-401" element={
-          <NotFound
-            code="401"
-            title="Unauthorized"
-            description="Waduh, sepertinya Anda belum login atau tidak punya akses ke sini."
-          />
-        } />
-
-        <Route path="/error-403" element={
-          <NotFound
-            code="403"
-            title="Access Forbidden"
-            description="Maaf ya, area ini terlarang untuk akun Anda. Silakan hubungi admin."
-          />
-        } />
-
-        {/* Page Not Found (404) */}
-        <Route path="*" element={
-          <NotFound
-            code="404"
-            title="Lost in Space"
-            description="Halaman yang kamu cari tidak ada di radar kami. Mungkin sedang dalam perbaikan."
-
-          />
-        } />
-      </Route>
-      <Route element={<AuthLayout />}>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot" element={<Forgot />} />
-      </Route>
-    </Routes>
+            />
+          } />
+        </Route>
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot" element={<Forgot />} />
+        </Route>
+      </Routes>
     </Suspense>
   );
 }
